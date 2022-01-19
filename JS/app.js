@@ -1,9 +1,11 @@
 $(document).ready(()=>{
 	$("#searchForm").submit(function(event){
-		let searchText= $("#searchText").val()
-		getMovies(searchText)
+		let searchText= $("#userquery").val()
+		console.log(searchText)
+
+		// getMovies(searchText)
 		getGames(searchText)
-		getBooks(searchText)
+		// getBooks(searchText)
 		event.preventDefault()
 		
 	})
