@@ -25,14 +25,14 @@ function getGames(searchText){
 	$.ajax(settings).done(function (response) {
 		console.log(response);
 
-		movies= response.data
+		games= response.data
 		let output  = ''
-		$.each(movies,(index, movie)=>{
+		$.each(games,(index, games)=>{
 			output += `
 			<div class="col-md-3">
     			<div class="well-text-center">
-        		<img src=${movie.id}>
-        		<h5>${movie.title}</h5>
+        		<img src=${games.id}>
+        		<h5>${games.title}</h5>
 
 
     		</div>
@@ -41,7 +41,7 @@ function getGames(searchText){
 			`
 		})
 
-		$("#movies").html(output)
+		$("#games").html(output)
 		
 
 
@@ -64,12 +64,12 @@ function getBooks(searchText){
 		console.log(response);
 		movies= response.data
 		let output  = ''
-		$.each(movies,(index, movie)=>{
+		$.each(books,(index, book)=>{
 			output += `
 			<div class="col-md-3">
     			<div class="well-text-center">
-        		<img src=${movie.id}>
-        		<h5>${movie.title}</h5>
+        		<img src=${book.id}>
+        		<h5>${book.title}</h5>
 
 
     		</div>
@@ -78,7 +78,7 @@ function getBooks(searchText){
 			`
 		})
 
-		$("#movies").html(output)
+		$("#books").html(output)
 		
 
 
