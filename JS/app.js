@@ -62,5 +62,25 @@ function getBooks(searchText){
 	
 	$.ajax(settings).done(function (response) {
 		console.log(response);
+		movies= response.data
+		let output  = ''
+		$.each(movies,(index, movie)=>{
+			output += `
+			<div class="col-md-3">
+    			<div class="well-text-center">
+        		<img src=${movie.id}>
+        		<h5>${movie.title}</h5>
+
+
+    		</div>
+		</div>
+			
+			`
+		})
+
+		$("#movies").html(output)
+		
+
+
 	});
 }
