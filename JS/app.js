@@ -2,10 +2,8 @@ $(document).ready(()=>{
 	$("#searchForm").submit(function(event){
 		let searchText= $("#userquery").val()
 		console.log(searchText)
-
-		// getMovies(searchText)
 		getGames(searchText)
-		// getBooks(searchText)
+	
 		event.preventDefault()
 		
 	})
