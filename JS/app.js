@@ -63,13 +63,24 @@ const insertGameImage = (gameImage) => {
   }
 };
 
-const insertBookImage = (bookImage) =>{
-  if( bookImage.volumeInfo.imageLinks.thumbnail !== null ){
-    return bookImage.volumeInfo.imageLinks.thumbnail ;
-  }else{
-    return "../images/booksalt.jpg"
+const insertBookImage = (bookImage) => {
+  if (bookImage.volumeInfo.imageLinks.thumbnail !== null) {
+    return bookImage.volumeInfo.imageLinks.thumbnail;
+  } else if (bookImage.volumeInfo.imageLinks.thumbnail !== "") {
+    return "../images/booksalt.jpg";
+  } else {
+    return "../images/booksalt.jpg";
   }
-}
+};
+
+//return rating
+const returnRating = (bookData) => {
+  if (bookData.volumeInfo.averageRating !== undefined) {
+    return bookData.volumeInfo.averageRating;
+  } else {
+    return "X";
+  }
+};
 
 //Get games and append
 const getGameData = async () => {
@@ -143,16 +154,18 @@ const getBooksData = async () => {
 
     console.log(booksResponseArray);
 
-     booksResponseArray.forEach((bookResponse) => {
-       const booksContainer = document.createElement("div");
-       booksContainer.className += "renderresult";
-       booksContainer.innerHTML += [
-         `<img class="image mb-3" src="${insertBookImage(bookResponse)}">`,
-         `<h5>${bookResponse.volumeInfo.title}</h5>`,
-         `<p>Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
-         `<p>Published:${bookResponse.volumeInfo.publishedDate}</p>`
-       ].join("");
-       booksDiv.append(booksContainer);
+    booksResponseArray.forEach((bookResponse) => {
+      const booksContainer = document.createElement("div");
+      booksContainer.className += "renderresult";
+      booksContainer.innerHTML += [
+        `<img class="image mb-3" src="${insertBookImage(bookResponse)}">`,
+        `<h5>${bookResponse.volumeInfo.title}</h5>`,
+        `<p>Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
+        `<p>Publisher:${bookResponse.volumeInfo.publisher}</p>`,
+        `<p>Published:${bookResponse.volumeInfo.publishedDate}</p>`,
+        `<p>Rating:${returnRating(bookResponse)}/5</p>`,
+      ].join("");
+      booksDiv.append(booksContainer);
     });
   } catch (error) {
     console.log("What Now:", error);
@@ -164,6 +177,8 @@ const getBooksData = async () => {
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   getBooksData();
+  getGameData();
+  getMovieData();
   searchQuery.value = "";
   gameResults.innerText = "";
 });
