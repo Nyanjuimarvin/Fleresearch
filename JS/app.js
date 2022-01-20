@@ -181,4 +181,17 @@ searchButton.addEventListener("click", (e) => {
   getMovieData();
   searchQuery.value = "";
   gameResults.innerText = "";
+  movieResults.innerText = "";
+  bookResults.innerText = "";
+
+  // swal({
+  //   title: `Warning`,
+  //   text: "Please select an option",
+  //   imageUrl: "../images/alertimg.jpg",
+  //   imageHeight: 300,
+  //   imageWidth: 400,
+  //   footer: "Select and we're ready to go"
+  // });
 });
+
+$(document).ready(() => {});
