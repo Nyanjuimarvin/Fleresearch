@@ -26,19 +26,28 @@ const gameRating = (rated) => {
   if (rated !== null) {
     return rated;
   } else {
-    return "NOT RATED";
+    return "N/A";
   }
 };
 
-const returnTitles = (objectKey) => {
-  if (typeof objectKey !== "undefined") {
-    return objectKey;
+//Look through all titles and return available one
+const extractTitles = (key) => {
+  if (typeof key.original_title !== "undefined") {
+    return key.original_title;
+  } else if (typeof key.title !== "undefined") {
+    return key.title;
+  } else if (typeof key.name !== "undefined") {
+    return key.name;
+  } else if (typeof key.original_name !== "undefined") {
+    return key.original_name;
   } else {
-    return "Custom";
+    return "No Title";
   }
 };
 
-//Async function to get data from RAWG with axios
+//assign alternative image if none
+
+//Get games and append
 const getGameData = async () => {
   const gameSearchTerm = searchQuery.value;
 
@@ -66,6 +75,7 @@ const getGameData = async () => {
   }
 };
 
+//Get movies/shows and append
 const getMovieData = async () => {
   const tvSearchTerm = searchQuery.value;
   const requiredImageUrl = `https://image.tmdb.org/t/p/original/`;
@@ -86,7 +96,7 @@ const getMovieData = async () => {
         `<img class="image mb-3" src="${
           requiredImageUrl + movieResponse.backdrop_path
         }">`,
-        `<h5 class"ps-4">${returnTitles(movieResponse.name)}</h5>`,
+        `<h5 class"ps-4">${extractTitles(movieResponse)}</h5>`,
         `<p>Type:${movieResponse.media_type}</p>`,
         `<p class="pb-3">Rated:${movieResponse.vote_average}</p>`,
         `<h6>Summary</h6>`,
@@ -99,9 +109,13 @@ const getMovieData = async () => {
   }
 };
 
+
+//Get Books and append
+
+
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
-  getMovieData();
+  getBooksData();
   searchQuery.value = "";
   gameResults.innerText = "";
 });
