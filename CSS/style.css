@@ -12,7 +12,6 @@ body {
 
 .renderresult{
   outline: none;
-  text-align: left;
   box-shadow: 5px 7px 36px 0px rgba(0,34,0,0.75);
   border-radius: 10px;
   margin-right: 20px;
@@ -20,12 +19,17 @@ body {
   margin-bottom: 20px;
   width: 300px;
   padding-bottom: 40px;
-  line-height: 4px;
+  text-align: center;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: none;
+  white-space: normal;
   overflow: hidden;
 }
 
 .image{
   width: 100%;
-  height: 65%;
+  height: 200px;
   object-fit: cover;
 }

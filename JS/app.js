@@ -45,7 +45,23 @@ const extractTitles = (key) => {
   }
 };
 
-//assign alternative image if none
+//assign images if none
+
+const insertMovieImage = (movieImage) => {
+  if (movieImage.backdrop_path !== null) {
+    return requiredImageUrl + movieImage.backdrop_path;
+  } else {
+    return "../images/moviealt.jpg";
+  }
+};
+
+const insertGameImage = (gameImage) =>{
+  if( gameImage.background_image !== null ){
+    return gameImage.background_image;
+  }else{
+    return "../images/gamealt.jpg"
+  }
+}
 
 //Get games and append
 const getGameData = async () => {
@@ -63,8 +79,8 @@ const getGameData = async () => {
       const gameContainer = document.createElement("div");
       gameContainer.className += "renderresult";
       gameContainer.innerHTML += [
-        `<img class="image mb-3" src="${element.background_image}">`,
-        `<h5 class"ps-4">${element.name}</h5>`,
+        `<img class="image mb-3" src="${insertGameImage(element)}">`,
+        `<h5 class="ps-3">${element.name}</h5>`,
         `<p>Suggested by:${element.suggestions_count}</p>`,
         `<p class="pb-3">Rated:${gameRating(element.metacritic)}</p>`,
       ].join("");
@@ -75,10 +91,10 @@ const getGameData = async () => {
   }
 };
 
+const requiredImageUrl = `https://image.tmdb.org/t/p/original/`;
 //Get movies/shows and append
 const getMovieData = async () => {
   const tvSearchTerm = searchQuery.value;
-  const requiredImageUrl = `https://image.tmdb.org/t/p/original/`;
 
   try {
     const movieRes = await axios.get(
@@ -93,14 +109,12 @@ const getMovieData = async () => {
       const movieContainer = document.createElement("div");
       movieContainer.className += "renderresult";
       movieContainer.innerHTML += [
-        `<img class="image mb-3" src="${
-          requiredImageUrl + movieResponse.backdrop_path
-        }">`,
-        `<h5 class"ps-4">${extractTitles(movieResponse)}</h5>`,
-        `<p>Type:${movieResponse.media_type}</p>`,
+        `<img class="image mb-3" src="${insertMovieImage(movieResponse)}">`,
+        `<h3>${extractTitles(movieResponse)}</h3>`,
+        `<h5>Type:${movieResponse.media_type}</h5>`,
         `<p class="pb-3">Rated:${movieResponse.vote_average}</p>`,
         `<h6>Summary</h6>`,
-        `<p class"mb-6 lh-2">${movieResponse.overview}</p>`,
+        `<p class"mb-4 p-3 lh-5 pb-3">${movieResponse.overview}</p>`,
       ].join("");
       moviesDiv.append(movieContainer);
     });
@@ -109,13 +123,11 @@ const getMovieData = async () => {
   }
 };
 
-
 //Get Books and append
-
 
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
-  getBooksData();
+  getGameData();
   searchQuery.value = "";
   gameResults.innerText = "";
 });
