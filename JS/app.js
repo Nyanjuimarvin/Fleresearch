@@ -1,3 +1,4 @@
+
 const searchQuery = document.querySelector("#userquery");
 const searchButton = document.querySelector("#searchbutton");
 
@@ -194,4 +195,3 @@ searchButton.addEventListener("click", (e) => {
   // });
 });
 
-$(document).ready(() => {});
