@@ -55,11 +55,19 @@ const insertMovieImage = (movieImage) => {
   }
 };
 
-const insertGameImage = (gameImage) =>{
-  if( gameImage.background_image !== null ){
+const insertGameImage = (gameImage) => {
+  if (gameImage.background_image !== null) {
     return gameImage.background_image;
+  } else {
+    return "../images/gamealt.jpg";
+  }
+};
+
+const insertBookImage = (bookImage) =>{
+  if( bookImage.volumeInfo.imageLinks.thumbnail !== null ){
+    return bookImage.volumeInfo.imageLinks.thumbnail ;
   }else{
-    return "../images/gamealt.jpg"
+    return "../images/booksalt.jpg"
   }
 }
 
@@ -123,11 +131,39 @@ const getMovieData = async () => {
   }
 };
 
+const getBooksData = async () => {
+  const bookSearchTerm = searchQuery.value;
+
+  try {
+    const bookRes = await axios.get(
+      `https://www.googleapis.com/books/v1/volumes?q=${bookSearchTerm}&key=${booksApiKey}`
+    );
+    const booksResponseArray = bookRes.data.items;
+    bookResults.innerText = booksResponseArray.length;
+
+    console.log(booksResponseArray);
+
+     booksResponseArray.forEach((bookResponse) => {
+       const booksContainer = document.createElement("div");
+       booksContainer.className += "renderresult";
+       booksContainer.innerHTML += [
+         `<img class="image mb-3" src="${insertBookImage(bookResponse)}">`,
+         `<h5>${bookResponse.volumeInfo.title}</h5>`,
+         `<p>Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
+         `<p>Published:${bookResponse.volumeInfo.publishedDate}</p>`
+       ].join("");
+       booksDiv.append(booksContainer);
+    });
+  } catch (error) {
+    console.log("What Now:", error);
+  }
+};
+
 //Get Books and append
 
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
-  getGameData();
+  getBooksData();
   searchQuery.value = "";
   gameResults.innerText = "";
 });
