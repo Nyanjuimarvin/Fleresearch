@@ -1,4 +1,3 @@
-
 const searchQuery = document.querySelector("#userquery");
 const searchButton = document.querySelector("#searchbutton");
 
@@ -175,54 +174,24 @@ const getBooksData = async () => {
 
 //Get Books and append
 
-searchButton.addEventListener("click",  (e) => {
+searchButton.addEventListener("click", (e) => {
   e.preventDefault();
-  if(searchQuery.value === ""){
-    swal({
-      title: `Hello There`,
-      text: "Please enter a Search Term",
-      imageUrl: "../images/alertimg.jpg",
-      imageHeight: 350,
-      imageWidth: 450,
-      footer: "Enter your search term and you'll be good to go",
-    });
-  }else if (bookBox.checked !== false) {
-    getBooksData();
-    searchQuery.value = "";
-  } else if (movieBox.checked !== false) {
-    getMovieData();
-    searchQuery.value = "";
-  } else if (gameBox.checked !== false) {
-    getGameData();
-    searchQuery.value = "";
-  } else if (bookBox.checked !== false && movieBox.checked !== false) {
-    getBooksData();
-    getMovieData();
-    searchQuery.value = "";
-  } else if (movieBox.checked !== false && gameBox.checked !== false) {
-    getMovieData();
-    getGameData();
-    searchQuery.value = "";
-  } else {
-    getBooksData();
-    getGameData();
-    getMovieData();
-    searchQuery.value = "";
-  }
+  getBooksData();
+  getGameData();
+  getMovieData();
+  searchQuery.value = "";
+  gameResults.innerText = "";
+  movieResults.innerText = "";
+  bookResults.innerText = "";
+
+  // swal({
+  //   title: `Warning`,
+  //   text: "Please select an option",
+  //   imageUrl: "../images/alertimg.jpg",
+  //   imageHeight: 300,
+  //   imageWidth: 400,
+  //   footer: "Select and we're ready to go"
+  // });
 });
 
-$(document).ready(() => {
-  //Empty divs when making a new search
-  $("#userquery").click(() => {
-    $("#booksdiv").empty();
-    $("#gamesdiv").empty();
-    $("#moviesdiv").empty();
-    $(bookResults).text("");
-    $(gameResults).text("");
-    $(movieResults).text("");
-  });
-});
-
-
-
-
+$(document).ready(() => {});
