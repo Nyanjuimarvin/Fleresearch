@@ -19,8 +19,7 @@ const bookResults = document.querySelector(".bookresults");
 //Api keys
 const gamesApiKey = "94b30e61ab464d5391dad2327cbde848";
 const booksApiKey = "AIzaSyB6FaNTehgPfiFglcdcvq6XOl8d_Jsf-r8";
-const anotherMovieApiKey = "80c2c0f8c85114414c562a7c20f011c6";
-const tvShowsApiKey = "91f5042a";
+const movieApiKey = "80c2c0f8c85114414c562a7c20f011c6";
 
 const gameRating = (rated) => {
   if (rated !== null) {
@@ -136,14 +135,19 @@ const getGameData = async () => {
         `<img class="image mb-3" src="${insertGameImage(element)}">`,
         `<h3 class="ps-3 text-decoration-underline text-warning">${element.name}</h3>`,
         `<h6 class="text-decoration-underline text-info text-start ps-3">Genre(s)</h6>`,
-        `<p class="text-start ps-3">${returnGenres(element.genres)}</p>`,
+        `<p class="text-start ps-3 fs-5">${returnGenres(element.genres)}</p>`,
+        `<p class="text-start ps-3">Released:${element.released}</p>`,
         `<p class="text-decoration-underline text-warning text-start ps-3">Review</p>`,
         `<p class="text-start ps-3">Suggested by:${element.suggestions_count}</p>`,
-        `<p class="text-start ps-3 pb-2">Rated:${gameRating(element.metacritic)}</p>`,
-        `<p class="text-decoration-underline text-warning">Tags</p>`,
-        `<p class="text-success text-start ps-3 pb-2">${returnTags(element.tags)}</p>`,
-        `<h6 class="text-decoration-underline text-warning">Platforms</h6>`,
-        `<p class="text-start ps-3">${returnPlatforms(element.platforms)}</p>`
+        `<p class="text-start ps-3 pb-2">Rated:${gameRating(
+          element.metacritic
+        )}</p>`,
+        `<p class="text-decoration-underline text-warning fs-4">Tags</p>`,
+        `<p class="text-success text-start ps-3 pb-2">${returnTags(
+          element.tags
+        )}</p>`,
+        `<h6 class="text-decoration-underline text-warning fs-4">Platforms</h6>`,
+        `<p class="text-start ps-3">${returnPlatforms(element.platforms)}</p>`,
       ].join("");
       gamesDiv.append(gameContainer);
     });
@@ -161,7 +165,7 @@ const getMovieData = async () => {
 
   try {
     const movieRes = await axios.get(
-      `https://api.themoviedb.org/3/search/multi?api_key=${anotherMovieApiKey}&language=en-US&query=${tvSearchTerm}&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/search/multi?api_key=${movieApiKey}&language=en-US&query=${tvSearchTerm}&page=1&include_adult=false`
     );
     const movieResponseArray = movieRes.data.results;
 
@@ -173,11 +177,13 @@ const getMovieData = async () => {
       movieContainer.className += "renderresult";
       movieContainer.innerHTML += [
         `<img class="image mb-3" src="${insertMovieImage(movieResponse)}">`,
-        `<h3 class="text-decoration-underline text-warning">${extractTitles(movieResponse)}</h3>`,
+        `<h3 class="text-decoration-underline text-warning">${extractTitles(
+          movieResponse
+        )}</h3>`,
         `<h5>Type:${movieResponse.media_type}</h5>`,
         `<p class="pb-3">Rated:${movieResponse.vote_average}</p>`,
         `<h6 class="text-decoration-underline text-warning">Summary</h6>`,
-        `<p class="text-start ps-3">${movieResponse.overview}</p>`
+        `<p class="text-start ps-3">${movieResponse.overview}</p>`,
       ].join("");
       moviesDiv.append(movieContainer);
     });
@@ -207,7 +213,7 @@ const getBooksData = async () => {
         `<p class="text-start ps-3">Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
         `<p class="text-start ps-3">Publisher:${bookResponse.volumeInfo.publisher}</p>`,
         `<p class="text-start ps-3">Published:${bookResponse.volumeInfo.publishedDate}</p>`,
-        `<p class="text-start ps-3">Rating:${returnRating(bookResponse)}/5</p>`
+        `<p class="text-start ps-3">Rating:${returnRating(bookResponse)}/5</p>`,
       ].join("");
       booksDiv.append(booksContainer);
     });
@@ -215,25 +221,3 @@ const getBooksData = async () => {
     console.log("What Now:", error);
   }
 };
-
-//Get Books and append
-
-searchButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  getBooksData();
-  getGameData();
-  getMovieData();
-  //   searchQuery.value = "";
-  //   gameResults.innerText = "";
-  //   movieResults.innerText = "";
-  //   bookResults.innerText = "";
-
-  // swal({
-  //   title: `Warning`,
-  //   text: "Please select an option",
-  //   imageUrl: "../images/alertimg.jpg",
-  //   imageHeight: 300,
-  //   imageWidth: 400,
-  //   footer: "Select and we're ready to go"
-  // });
-});

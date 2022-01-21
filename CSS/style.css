@@ -1,34 +1,4 @@
 @font-face {
-  font-family: "Chrobot";
-  src: url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.eot");
-  src: url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.eot?#iefix")
-      format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.woff2")
-      format("woff2"),
-    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.woff")
-      format("woff"),
-    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.ttf")
-      format("truetype"),
-    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.svg#Chrobot")
-      format("svg");
-}
-
-@font-face {
-  font-family: "Alien Robot";
-  src: url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.eot");
-  src: url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.eot?#iefix")
-      format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.woff2")
-      format("woff2"),
-    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.woff")
-      format("woff"),
-    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.ttf")
-      format("truetype"),
-    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.svg#Alien Robot")
-      format("svg");
-}
-
-@font-face {
   font-family: "Techno";
   src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot");
   src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot?#iefix")
@@ -43,6 +13,9 @@
       format("svg");
 }
 
+.swal2-popup {
+  font-family: Techno,sans-serif;
+}
 body {
   background-image: url(../images/pexels-pixabay-265685.jpg);
   background-attachment: fixed;
