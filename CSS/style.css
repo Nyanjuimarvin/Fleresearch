@@ -1,4 +1,58 @@
-.maincontent{
-    background-image: url(../images/pexels-pixabay-265685.jpg);
-    background-size: cover;
-}
+@font-face {
+  font-family: "Techno";
+  src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot");
+  src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot?#iefix")
+  format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.woff2")
+  format("woff2"),
+  url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.woff")
+  format("woff"),
+  url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.ttf")
+  format("truetype"),
+  url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.svg#Techno")
+  format("svg");
+  }
+  
+  .swal2-popup {
+  font-family: Techno,sans-serif;
+  }
+  body {
+  background-image: url(../images/pexels-pixabay-265685.jpg);
+  background-attachment: fixed;
+  font-family: Techno, sans-serif;
+  background-size: cover;
+  }
+  
+  #gamesdiv,
+  #moviesdiv,
+  #booksdiv {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  }
+  
+  .renderresult {
+  outline: none;
+  box-shadow: 5px 7px 36px 0px rgba(0, 34, 0, 0.75);
+  border-radius: 18px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 300px;
+  padding-bottom: 40px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: none;
+  white-space: normal;
+  overflow: hidden;
+  }
+  
+  .image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  }
+  
