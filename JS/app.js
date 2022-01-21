@@ -182,7 +182,7 @@ searchButton.addEventListener("click",  (e) => {
       title: `Hello There`,
       text: "Please enter a Search Term",
       imageUrl: "../images/alertimg.jpg",
-      imageHeight: 360,
+      imageHeight: 350,
       imageWidth: 450,
       footer: "Enter your search term and you'll be good to go",
     });
