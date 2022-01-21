@@ -12,14 +12,15 @@
     href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
     integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
   </link>
+
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
+
 
 
   <link rel="stylesheet" href="CSS/style.css">
@@ -82,6 +83,17 @@
               more,less!</h3>
             <p class="lead text-primary">Fill in the search bar,select the expected results and off we go</p>
 
+
+            <div class="col-3 mb-4">
+              <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" placeholder="Searchterm..." type="search"
+                  value="" id="userquery">
+                <span class="input-group-append">
+                  <button class="btn btn-outline-info border-left-0 border p-2" type="button" id="searchbutton">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+
             <form id="searchForm">
               <div class="col-3 mb-4">
                 <div class="input-group col-md-4">
@@ -93,9 +105,12 @@
                     </button>
                   </span>
                 </div>
+
               </div>
 
+
             </form>
+
 
 
           </div>
