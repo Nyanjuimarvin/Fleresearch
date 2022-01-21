@@ -17,7 +17,8 @@
   </link>
 
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
 
 
@@ -29,7 +30,7 @@
 
   <div class="container-fluid overflow-hidden">
     <div class="row vh-100 overflow-auto">
-      <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+      <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-black bg-opacity-50 d-flex sticky-top">
         <div
           class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
           <a href="#" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -82,20 +83,17 @@
             <p class="lead text-primary">Fill in the search bar,select the expected results and off we go</p>
 
             <form id="searchForm">
-
-
-
-            <div class="col-3 mb-4">
-              <div class="input-group col-md-4">
-                <input class="form-control py-2 border-right-0 border" placeholder="Searchterm..." type="search"
-                  value="" id="userquery">
-                <span class="input-group-append">
-                  <button class="btn btn-outline-info border-left-0 border p-2" type="button" id="searchbutton">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
+              <div class="col-3 mb-4">
+                <div class="input-group col-md-4">
+                  <input class="form-control py-2 border-right-0 border" placeholder="Searchterm..." type="search"
+                    value="" id="userquery">
+                  <span class="input-group-append">
+                    <button class="btn btn-outline-info border-left-0 border p-2" type="button" id="searchbutton">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
               </div>
-            </div>
 
             </form>
             <div id="movies"></div>
@@ -138,7 +136,7 @@
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                   aria-expanded="false" aria-controls="collapseOne">
-                   <i class="fa fa-book fs-2 pt-0 me-3"></i> BOOKS <span class="ms-4 text-success bookresults"></span>
+                  <i class="fa fa-book fs-2 pt-0 me-3"></i> BOOKS <span class="ms-4 text-success bookresults"></span>
                 </button>
               </h2>
 
@@ -166,7 +164,7 @@
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                 <i class="fa fa-film fs-2 pt-0 me-3"></i> MOVIES <span class="ms-3 text-success movieresults"></span>
+                  <i class="fa fa-film fs-2 pt-0 me-3"></i> MOVIES <span class="ms-3 text-success movieresults"></span>
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -178,11 +176,6 @@
             </div>
           </div>
         </main>
-        <footer class="row bg-TRANSPARENT py-4 mt-auto">
-          <div class="col text-center">
-            <p class="fs-1 text-success">Footer Here</p>
-          </div>
-        </footer>
       </div>
     </div>
   </div>

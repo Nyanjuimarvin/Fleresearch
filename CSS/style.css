@@ -1,24 +1,73 @@
+@font-face {
+  font-family: "Chrobot";
+  src: url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.eot");
+  src: url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/8fbdf9e66985674468d4798bd9560334.svg#Chrobot")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Alien Robot";
+  src: url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.eot");
+  src: url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/91a89677f7a9c6e4f0f4d76425d4d7cd.svg#Alien Robot")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Techno";
+  src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot");
+  src: url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/d93b5cc1ee5c05bae82463f375113a7f.svg#Techno")
+      format("svg");
+}
+
 body {
   background-image: url(../images/pexels-pixabay-265685.jpg);
   background-attachment: fixed;
+  font-family: Techno, sans-serif;
   background-size: cover;
 }
 
-#gamesdiv, #moviesdiv, #booksdiv{
+#gamesdiv,
+#moviesdiv,
+#booksdiv {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.renderresult{
+.renderresult {
   outline: none;
-  box-shadow: 5px 7px 36px 0px rgba(0,34,0,0.75);
-  border-radius: 10px;
+  box-shadow: 5px 7px 36px 0px rgba(0, 34, 0, 0.75);
+  border-radius: 18px;
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
   width: 300px;
   padding-bottom: 40px;
+  font-size: 18px;
   text-align: center;
   line-height: 24px;
   overflow-wrap: break-word;
@@ -28,7 +77,7 @@ body {
   overflow: hidden;
 }
 
-.image{
+.image {
   width: 100%;
   height: 200px;
   object-fit: cover;

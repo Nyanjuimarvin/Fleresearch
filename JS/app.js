@@ -1,4 +1,3 @@
-
 const searchQuery = document.querySelector("#userquery");
 const searchButton = document.querySelector("#searchbutton");
 
@@ -83,6 +82,41 @@ const returnRating = (bookData) => {
   }
 };
 
+//Return tags
+const returnTags = (tagsArray) => {
+  let tagsStore = [];
+
+  for (let tag of tagsArray) {
+    if (tag.language === "eng") {
+      tagsStore.push(tag.name);
+    }
+  }
+  return tagsStore.toString();
+};
+
+//Return Platforms
+
+const returnPlatforms = (platformArray) => {
+  let platStore = [];
+  for (let plat of platformArray) {
+    if (plat.platform !== null) {
+      platStore.push(plat.platform.name);
+    }
+  }
+  return platStore.toString();
+};
+
+//return genres
+const returnGenres = (genreArray) => {
+  let genreStore = [];
+  for (let genre of genreArray) {
+    if (genre.name !== null) {
+      genreStore.push(genre.name);
+    }
+  }
+  return genreStore.toString();
+};
+
 //Get games and append
 const getGameData = async () => {
   const gameSearchTerm = searchQuery.value;
@@ -100,19 +134,28 @@ const getGameData = async () => {
       gameContainer.className += "renderresult";
       gameContainer.innerHTML += [
         `<img class="image mb-3" src="${insertGameImage(element)}">`,
-        `<h5 class="ps-3">${element.name}</h5>`,
-        `<p>Suggested by:${element.suggestions_count}</p>`,
-        `<p class="pb-3">Rated:${gameRating(element.metacritic)}</p>`,
+        `<h3 class="ps-3 text-decoration-underline text-warning">${element.name}</h3>`,
+        `<h6 class="text-decoration-underline text-info text-start ps-3">Genre(s)</h6>`,
+        `<p class="text-start ps-3">${returnGenres(element.genres)}</p>`,
+        `<p class="text-decoration-underline text-warning text-start ps-3">Review</p>`,
+        `<p class="text-start ps-3">Suggested by:${element.suggestions_count}</p>`,
+        `<p class="text-start ps-3 pb-2">Rated:${gameRating(element.metacritic)}</p>`,
+        `<p class="text-decoration-underline text-warning">Tags</p>`,
+        `<p class="text-success text-start ps-3 pb-2">${returnTags(element.tags)}</p>`,
+        `<h6 class="text-decoration-underline text-warning">Platforms</h6>`,
+        `<p class="text-start ps-3">${returnPlatforms(element.platforms)}</p>`
       ].join("");
       gamesDiv.append(gameContainer);
     });
   } catch (error) {
-    alert("Caught Error:", error);
+    console.log("Caught Error:", error);
   }
 };
 
 const requiredImageUrl = `https://image.tmdb.org/t/p/original/`;
+
 //Get movies/shows and append
+
 const getMovieData = async () => {
   const tvSearchTerm = searchQuery.value;
 
@@ -130,11 +173,11 @@ const getMovieData = async () => {
       movieContainer.className += "renderresult";
       movieContainer.innerHTML += [
         `<img class="image mb-3" src="${insertMovieImage(movieResponse)}">`,
-        `<h3>${extractTitles(movieResponse)}</h3>`,
+        `<h3 class="text-decoration-underline text-warning">${extractTitles(movieResponse)}</h3>`,
         `<h5>Type:${movieResponse.media_type}</h5>`,
         `<p class="pb-3">Rated:${movieResponse.vote_average}</p>`,
-        `<h6>Summary</h6>`,
-        `<p class"mb-4 p-3 lh-5 pb-3">${movieResponse.overview}</p>`,
+        `<h6 class="text-decoration-underline text-warning">Summary</h6>`,
+        `<p class="text-start ps-3">${movieResponse.overview}</p>`
       ].join("");
       moviesDiv.append(movieContainer);
     });
@@ -160,11 +203,11 @@ const getBooksData = async () => {
       booksContainer.className += "renderresult";
       booksContainer.innerHTML += [
         `<img class="image mb-3" src="${insertBookImage(bookResponse)}">`,
-        `<h5>${bookResponse.volumeInfo.title}</h5>`,
-        `<p>Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
-        `<p>Publisher:${bookResponse.volumeInfo.publisher}</p>`,
-        `<p>Published:${bookResponse.volumeInfo.publishedDate}</p>`,
-        `<p>Rating:${returnRating(bookResponse)}/5</p>`,
+        `<h3 class="text-decoration-underline text-warning">${bookResponse.volumeInfo.title}</h3>`,
+        `<p class="text-start ps-3">Author(s):${bookResponse.volumeInfo.authors.toString()}</p>`,
+        `<p class="text-start ps-3">Publisher:${bookResponse.volumeInfo.publisher}</p>`,
+        `<p class="text-start ps-3">Published:${bookResponse.volumeInfo.publishedDate}</p>`,
+        `<p class="text-start ps-3">Rating:${returnRating(bookResponse)}/5</p>`
       ].join("");
       booksDiv.append(booksContainer);
     });
@@ -180,10 +223,10 @@ searchButton.addEventListener("click", (e) => {
   getBooksData();
   getGameData();
   getMovieData();
-  searchQuery.value = "";
-  gameResults.innerText = "";
-  movieResults.innerText = "";
-  bookResults.innerText = "";
+  //   searchQuery.value = "";
+  //   gameResults.innerText = "";
+  //   movieResults.innerText = "";
+  //   bookResults.innerText = "";
 
   // swal({
   //   title: `Warning`,
@@ -194,4 +237,3 @@ searchButton.addEventListener("click", (e) => {
   //   footer: "Select and we're ready to go"
   // });
 });
-
