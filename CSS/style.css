@@ -14,12 +14,12 @@
   }
   
   .swal2-popup {
-  font-family: Techno,sans-serif;
+  font-family: Techno;
   }
   body {
   background-image: url(../images/pexels-pixabay-265685.jpg);
   background-attachment: fixed;
-  font-family: Techno, sans-serif;
+  font-family: Techno,sans-serif;
   background-size: cover;
   }
   

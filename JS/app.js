@@ -22,7 +22,7 @@ const booksApiKey = "AIzaSyB6FaNTehgPfiFglcdcvq6XOl8d_Jsf-r8";
 const movieApiKey = "80c2c0f8c85114414c562a7c20f011c6";
 
 const gameRating = (rated) => {
-if (rated !== null) {
+if (rated) {
 return rated;
 } else {
 return "N/A";
@@ -31,13 +31,13 @@ return "N/A";
 
 //Look through all titles and return available one
 const extractTitles = (key) => {
-if (typeof key.original_title !== "undefined") {
+if (key.original_title) {
 return key.original_title;
-} else if (typeof key.title !== "undefined") {
+} else if (key.title) {
 return key.title;
-} else if (typeof key.name !== "undefined") {
+} else if (key.name) {
 return key.name;
-} else if (typeof key.original_name !== "undefined") {
+} else if (key.original_name) {
 return key.original_name;
 } else {
 return "No Title";
@@ -47,7 +47,7 @@ return "No Title";
 //assign images if none
 
 const insertMovieImage = (movieImage) => {
-if (movieImage.backdrop_path !== null) {
+if (movieImage.backdrop_path) {
 return requiredImageUrl + movieImage.backdrop_path;
 } else {
 return "../images/moviealt.jpg";
@@ -55,7 +55,7 @@ return "../images/moviealt.jpg";
 };
 
 const insertGameImage = (gameImage) => {
-if (gameImage.background_image !== null) {
+if (gameImage.background_image) {
 return gameImage.background_image;
 } else {
 return "../images/gamealt.jpg";
@@ -63,7 +63,7 @@ return "../images/gamealt.jpg";
 };
 
 const insertBookImage = (bookImage) => {
-if (bookImage.volumeInfo.imageLinks.thumbnail !== null) {
+if (bookImage.volumeInfo.imageLinks.thumbnail) {
 return bookImage.volumeInfo.imageLinks.thumbnail;
 } else if (bookImage.volumeInfo.imageLinks.thumbnail !== "") {
 return "../images/booksalt.jpg";
@@ -74,7 +74,7 @@ return "../images/booksalt.jpg";
 
 //return rating
 const returnRating = (bookData) => {
-if (bookData.volumeInfo.averageRating !== undefined) {
+if (bookData.volumeInfo.averageRating) {
 return bookData.volumeInfo.averageRating;
 } else {
 return "X";
@@ -98,7 +98,7 @@ return tagsStore.toString();
 const returnPlatforms = (platformArray) => {
 let platStore = [];
 for (let plat of platformArray) {
-if (plat.platform !== null) {
+if (plat.platform) {
 platStore.push(plat.platform.name);
 }
 }
@@ -109,7 +109,7 @@ return platStore.toString();
 const returnGenres = (genreArray) => {
 let genreStore = [];
 for (let genre of genreArray) {
-if (genre.name !== null) {
+if (genre.name) {
 genreStore.push(genre.name);
 }
 }
@@ -229,20 +229,20 @@ imageHeight: 350,
 imageWidth: 450,
 footer: "Enter your search term and you'll be good to go",
 });
-}else if (bookBox.checked !== false) {
+}else if (bookBox.checked) {
 getBooksData();
 searchQuery.value = "";
-} else if (movieBox.checked !== false) {
+} else if (movieBox.checked) {
 getMovieData();
 searchQuery.value = "";
-} else if (gameBox.checked !== false) {
+} else if (gameBox.checked) {
 getGameData();
 searchQuery.value = "";
-} else if (bookBox.checked !== false && movieBox.checked !== false) {
+} else if (bookBox.checked && movieBox.checked) {
 getBooksData();
 getMovieData();
 searchQuery.value = "";
-} else if (movieBox.checked !== false && gameBox.checked !== false) {
+} else if (movieBox.checked && gameBox.checked) {
 getMovieData();
 getGameData();
 searchQuery.value = "";
